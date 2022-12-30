@@ -3,9 +3,10 @@ import { useStopwatch } from "react-timer-hook";
 
 function MyStopwatch(props) {
   console.log(props.firstClick);
-  const { seconds, minutes, hours, days, start, pause, reset } = useStopwatch({
+  const { seconds, minutes, hours, days, start, pause } = useStopwatch({
     autoStart: false,
   });
+  console.log(props.firstClick);
 
   React.useEffect(() => {
     if (props.firstClick) {
@@ -29,7 +30,6 @@ function MyStopwatch(props) {
 }
 
 export default function Timer(props) {
-  console.log(props.firstClick);
   return (
     <div className="timer effect8">
       <img

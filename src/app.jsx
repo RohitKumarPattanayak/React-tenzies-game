@@ -6,6 +6,7 @@ import Timer from "./components/Timer";
 import Turns from "./components/Turns";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import Toast from "./components/Toast";
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
@@ -17,7 +18,9 @@ export default function App() {
       let value = dice[0].value;
       let allSame = dice.every((die) => die.value === value);
       setTenzies(allSame);
-      setFirstClick(false);
+      if (allSame) {
+        setFirstClick(false);
+      }
     }
   }, [dice, firstClick]);
 
@@ -104,6 +107,7 @@ export default function App() {
           </button>
         </div>
       </main>
+      <Toast turn={turnCount} show={tenzies} />
     </div>
   );
 }
