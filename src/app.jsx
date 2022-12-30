@@ -52,6 +52,10 @@ export default function App() {
     );
   }
 
+  function refresh() {
+    location.reload();
+  }
+
   const diceElements = dice.map((die) => (
     <Die
       key={die.id}
@@ -75,7 +79,7 @@ export default function App() {
         <button className="big-button" onClick={rollDice}>
           Roll
         </button>
-        <button className="big-button" onClick={rollDice}>
+        <button className="big-button" onClick={refresh}>
           RESET
         </button>
       </div>
