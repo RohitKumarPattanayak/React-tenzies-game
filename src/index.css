@@ -26,7 +26,8 @@ main {
 .dice-container {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
-  margin-top: 3%;
+  margin-top: 1%;
+  margin-bottom: 3%;
   gap: 20px;
 }
 

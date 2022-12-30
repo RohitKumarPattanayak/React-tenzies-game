@@ -4,6 +4,8 @@ import { nanoid } from "nanoid";
 import Confetti from "./components/Confetti";
 import Timer from "./components/Timer";
 import Turns from "./components/Turns";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
@@ -83,10 +85,15 @@ export default function App() {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJkGPOfCPc2nKYrqkIsw3C8trJ2Pw9csIY7PyOddBQNfI7SvNVwSDWuAtpM75qE8-6_VI&usqp=CAU"
           }
         ></img>
-        <p className="instructions">
-          Roll until all dice are the same. Click each die to freeze
-        </p>
-        <bold>have to implement changes and time</bold>
+        <Popup trigger={<button>INSTRUCTIONS</button>} position="center">
+          <div>
+            <ol>
+              <li>Click "ROLL" until all dice are the same.</li>
+              <br />
+              <li>Click each "DIE" to freeze them.</li>
+            </ol>
+          </div>
+        </Popup>
         <div className="dice-container">{diceElements}</div>
         <div style={{ display: "flex", "justify-content": "space-around" }}>
           <button className="big-button" onClick={rollDice}>
