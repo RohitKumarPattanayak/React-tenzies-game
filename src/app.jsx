@@ -94,6 +94,8 @@ export default function App() {
               <li>Click "ROLL" until all dice are the same.</li>
               <br />
               <li>Click each "DIE" to freeze them.</li>
+              <br />
+              <li>Click on middle of the button to avoid a miss.</li>
             </ol>
           </div>
         </Popup>
