@@ -137,3 +137,51 @@ button.big-button:active::before {
 
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }
+
+.tenzi-logo {
+  width: 20%;
+  box-shadow: 0 0 50px #ccc;
+}
+
+.timer {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  background-color: lightgoldenrodyellow;
+  padding: 1%;
+  width: 20%;
+}
+
+.effect8 {
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.effect8:before,
+.effect8:after {
+  content: "";
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+.timerLogo {
+  width: 100%;
+}
+
+.turns {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  background-color: lightgoldenrodyellow;
+  padding: 1%;
+  width: 16%;
+}
+
+.turnLogo {
+  width: 100%;
+}

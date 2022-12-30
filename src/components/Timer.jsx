@@ -31,13 +31,11 @@ function MyStopwatch(props) {
 export default function Timer(props) {
   console.log(props.firstClick);
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: "10%",
-        right: "5%",
-      }}
-    >
+    <div className="timer effect8">
+      <img
+        src="https://st4.depositphotos.com/15539092/38148/v/600/depositphotos_381481628-stock-illustration-timer-logo-vibrating-effects.jpg"
+        className="timerLogo"
+      />
       <MyStopwatch firstClick={props.firstClick} />
     </div>
   );

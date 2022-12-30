@@ -3,10 +3,12 @@ import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "./components/Confetti";
 import Timer from "./components/Timer";
+import Turns from "./components/Turns";
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [firstClick, setFirstClick] = React.useState(false);
+  const [turnCount, setTurnCount] = React.useState(-1);
   React.useEffect(() => {
     let allHeld = dice.every((die) => die.isHeld === true);
     if (allHeld) {
@@ -16,6 +18,10 @@ export default function App() {
       setFirstClick(false);
     }
   }, [dice, firstClick]);
+
+  React.useEffect(() => {
+    setTurnCount((prev) => prev + 1);
+  }, [dice]);
 
   function allNewDice() {
     const newDice = [];
@@ -66,23 +72,31 @@ export default function App() {
   ));
 
   return (
-    <main style={{ position: "relative" }}>
+    <div>
       {tenzies && <Confetti />}
-      <Timer firstClick={firstClick} />
-      <h1 className="title">Tenzies</h1>
-      <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze
-      </p>
-      <bold>have to implement changes and time</bold>
-      <div className="dice-container">{diceElements}</div>
-      <div style={{ display: "flex", "justify-content": "space-around" }}>
-        <button className="big-button" onClick={rollDice}>
-          Roll
-        </button>
-        <button className="big-button" onClick={refresh}>
-          RESET
-        </button>
-      </div>
-    </main>
+      <main style={{ position: "relative" }}>
+        <Timer firstClick={firstClick} />
+        <Turns turns={turnCount} />
+        <img
+          className="tenzi-logo"
+          src={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJkGPOfCPc2nKYrqkIsw3C8trJ2Pw9csIY7PyOddBQNfI7SvNVwSDWuAtpM75qE8-6_VI&usqp=CAU"
+          }
+        ></img>
+        <p className="instructions">
+          Roll until all dice are the same. Click each die to freeze
+        </p>
+        <bold>have to implement changes and time</bold>
+        <div className="dice-container">{diceElements}</div>
+        <div style={{ display: "flex", "justify-content": "space-around" }}>
+          <button className="big-button" onClick={rollDice}>
+            Roll
+          </button>
+          <button className="big-button" onClick={refresh}>
+            RESET
+          </button>
+        </div>
+      </main>
+    </div>
   );
 }
