@@ -98,7 +98,7 @@ export default function App() {
           </div>
         </Popup>
         <div className="dice-container">{diceElements}</div>
-        <div style={{ display: "flex", "justify-content": "space-around" }}>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
           <button className="big-button" onClick={rollDice}>
             Roll
           </button>
