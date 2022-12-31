@@ -1,18 +1,19 @@
 import React from "react";
 import { useStopwatch } from "react-timer-hook";
-
 function MyStopwatch(props) {
-  console.log(props.firstClick);
   const { seconds, minutes, hours, days, start, pause } = useStopwatch({
     autoStart: false,
   });
-  console.log(props.firstClick);
 
   React.useEffect(() => {
     if (props.firstClick) {
       start();
     } else {
       pause();
+      localStorage.setItem(
+        "total_time",
+        hours * 60 * 60 + minutes * 60 + seconds
+      );
     }
   }, [props.firstClick]);
   return (

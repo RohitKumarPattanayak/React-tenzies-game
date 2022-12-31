@@ -21,8 +21,10 @@ export default function Toast(props) {
       <center>
         <h1>Your score:</h1>
         <hr />
-        <h1>Turns : {props.turn}</h1>
-        <h4>Time : under development</h4>
+        <h3>Turns : {props.turn}</h3>
+        <h3>Time : {localStorage.getItem("total_time")}</h3>
+        <hr />
+        <h1>Total score:</h1>
       </center>
     );
   };
