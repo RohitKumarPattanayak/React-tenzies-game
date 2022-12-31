@@ -19,12 +19,22 @@ export default function Toast(props) {
   const Msg = () => {
     return (
       <center>
-        <h1>Your score:</h1>
+        <h2>YOUR SCORE : </h2>
         <hr />
-        <h3>Turns : {props.turn}</h3>
-        <h3>Time : {localStorage.getItem("total_time")}</h3>
+        <h4>Turns : {props.turn}</h4>
+        <h4>Time : {localStorage.getItem("total_time")}</h4>
         <hr />
-        <h1>Total score:</h1>
+        <h3>
+          TOTAL SCORE :
+          <span style={{ color: "yellow" }}>
+            {" "}
+            {" " +
+              (300 -
+                (Number(props.turn) +
+                  Number(localStorage.getItem("total_time")))) *
+                10}
+          </span>
+        </h3>
       </center>
     );
   };

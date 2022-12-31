@@ -14,6 +14,10 @@ function MyStopwatch(props) {
         "total_time",
         hours * 60 * 60 + minutes * 60 + seconds
       );
+      localStorage.setItem(
+        "total_score",
+        localStorage.getItem("total_time") + props.turns
+      );
     }
   }, [props.firstClick]);
   return (
@@ -31,13 +35,14 @@ function MyStopwatch(props) {
 }
 
 export default function Timer(props) {
+  console.log("inside Timer : ", props.turn);
   return (
     <div className="timer effect8">
       <img
         src="https://st4.depositphotos.com/15539092/38148/v/600/depositphotos_381481628-stock-illustration-timer-logo-vibrating-effects.jpg"
         className="timerLogo"
       />
-      <MyStopwatch firstClick={props.firstClick} />
+      <MyStopwatch firstClick={props.firstClick} turns={props.turn} />
     </div>
   );
 }

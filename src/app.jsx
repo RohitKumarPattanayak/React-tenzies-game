@@ -80,7 +80,7 @@ export default function App() {
     <div>
       {tenzies && <Confetti />}
       <main style={{ position: "relative" }}>
-        <Timer firstClick={firstClick} />
+        <Timer firstClick={firstClick} turn={turnCount} />
         <Turns turns={turnCount} />
         <img
           className="tenzi-logo"
