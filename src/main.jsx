@@ -8,7 +8,7 @@ import Login from "./components/Login";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <center>
     {/* <App /> */}
-    <Login />
-    {/* <Dashboard /> */}
+    {/* <Login /> */}
+    <Dashboard />
   </center>
 );
