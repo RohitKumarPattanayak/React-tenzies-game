@@ -143,6 +143,11 @@ button.big-button:active::before {
   width: 20%;
   box-shadow: 0 0 50px #ccc;
 }
+.tenzi-logo-login {
+  width: 10%;
+  box-shadow: 0 0 50px #ccc;
+  margin-top: 5vh;
+}
 
 .timer {
   position: absolute;
@@ -185,4 +190,12 @@ button.big-button:active::before {
 
 .turnLogo {
   width: 100%;
+}
+
+.form {
+  border: whitesmoke 2px solid;
+  width: fit-content;
+  padding: 5%;
+  background-color: #f5f5f5;
+  margin-top: 5vh;
 }
