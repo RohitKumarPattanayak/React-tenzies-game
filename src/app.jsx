@@ -7,6 +7,7 @@ import Turns from "./components/Turns";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Toast from "./components/Toast";
+
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);

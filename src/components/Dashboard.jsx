@@ -34,42 +34,45 @@ const rows = [
 
 export default function Dashboard() {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">
-              <h2>Id</h2>
-            </TableCell>
-            <TableCell align="center">
-              <h2>Name</h2>
-            </TableCell>
-            <TableCell align="center">
-              <h2>Total Score</h2>
-            </TableCell>
-            <TableCell align="center">
-              <h2>Date</h2>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
+    <div>
+      <h1 style={{ color: "white" }}>DASHBOARD</h1>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">
+                <h2>Id</h2>
               </TableCell>
-              <TableCell align="center" component="th" scope="row">
-                {row.name}
+              <TableCell align="center">
+                <h2>Name</h2>
               </TableCell>
-              <TableCell align="center">{row.score}</TableCell>
-              <TableCell align="center">{row.date}</TableCell>
+              <TableCell align="center">
+                <h2>Total Score</h2>
+              </TableCell>
+              <TableCell align="center">
+                <h2>Date</h2>
+              </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell align="center" component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="center">{row.score}</TableCell>
+                <TableCell align="center">{row.date}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
