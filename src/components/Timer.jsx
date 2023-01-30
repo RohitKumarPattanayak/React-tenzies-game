@@ -35,7 +35,6 @@ function MyStopwatch(props) {
 }
 
 export default function Timer(props) {
-  console.log("inside Timer : ", props.turn);
   return (
     <div className="timer effect8">
       <img

@@ -6,6 +6,7 @@ import Timer from "./components/Timer";
 import Turns from "./components/Turns";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import axios from "axios";
 import { Button } from "@mui/material";
 import Toast from "./components/Toast";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,19 @@ export default function App() {
   const [firstClick, setFirstClick] = React.useState(false);
   const [turnCount, setTurnCount] = React.useState(-1);
   const navigate = useNavigate();
+
+  async function scoreUpdate() {
+    let score =
+      (300 - (Number(turnCount) + Number(localStorage.getItem("total_time")))) *
+      10;
+    let id = 1;
+    let result = await axios({
+      method: "put",
+      url: `http://localhost:5000/putUserDetails/${id}/${score}`,
+    });
+    console.log("result :: ", result);
+  }
+
   React.useEffect(() => {
     let allHeld = dice.every((die) => die.isHeld === true);
     if (allHeld) {
@@ -24,6 +38,7 @@ export default function App() {
       setTenzies(allSame);
       if (allSame) {
         setFirstClick(false);
+        scoreUpdate();
       }
     }
   }, [dice, firstClick]);
