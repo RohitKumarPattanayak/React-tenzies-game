@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { TextField, Button } from "@mui/material";
 
 function Login() {
@@ -6,7 +7,6 @@ function Login() {
     name: "",
   };
   const [formValues, setFormValues] = useState(defaultValues);
-
   function handleInputChange(e) {
     const { name, value } = e.target;
     setFormValues({
@@ -14,7 +14,6 @@ function Login() {
       [name]: value,
     });
   }
-  console.log(formValues);
   return (
     <div>
       <img

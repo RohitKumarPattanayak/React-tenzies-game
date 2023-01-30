@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import axios from "axios";
 import Paper from "@mui/material/Paper";
 
 function createData(id, name, score, date) {
@@ -33,6 +34,19 @@ const rows = [
 ];
 
 export default function Dashboard() {
+  const [userDetails, setUserDetails] = React.useState([]);
+
+  async function apiCall() {
+    let userdetailsData = await axios.get(
+      "http://localhost:5000/getUserDetails"
+    );
+    setUserDetails(userdetailsData.data.data);
+  }
+  console.log("user details", userDetails);
+  React.useEffect(() => {
+    apiCall();
+  }, []);
+
   return (
     <div>
       <h1 style={{ color: "white" }}>DASHBOARD</h1>
@@ -55,7 +69,7 @@ export default function Dashboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {userDetails.map((row) => (
               <TableRow
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -66,8 +80,10 @@ export default function Dashboard() {
                 <TableCell align="center" component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="center">{row.score}</TableCell>
-                <TableCell align="center">{row.date}</TableCell>
+                <TableCell align="center">{row.total_score}</TableCell>
+                <TableCell align="center">
+                  {Date(row.updatedAt).toString().slice(0, 25)}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
