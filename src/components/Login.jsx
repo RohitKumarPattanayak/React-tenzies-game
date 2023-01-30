@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { TextField, Button } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
+import Toast from "./Toast";
+import axios from "axios";
 function Login() {
+  const navigate = useNavigate();
   const defaultValues = {
     name: "",
   };
   const [formValues, setFormValues] = useState(defaultValues);
+  const [userApprove, setUserApprove] = useState(-1);
   function handleInputChange(e) {
     const { name, value } = e.target;
     setFormValues({
@@ -14,8 +17,30 @@ function Login() {
       [name]: value,
     });
   }
+  async function onSubmitHandler() {
+    let user = { data: formValues };
+    let result = await axios({
+      method: "post",
+      url: "http://localhost:5000/createUser",
+      data: user,
+    });
+    if (result.status === 201) {
+      navigate("/game");
+    } else {
+      setUserApprove(0);
+    }
+  }
   return (
     <div>
+      <Toast userCheck={userApprove} />
+      <Button
+        style={{ position: "absolute", right: "3%", background: "white" }}
+        onClick={() => {
+          navigate("/dashboard");
+        }}
+      >
+        Leaderboard
+      </Button>
       <img
         className="tenzi-logo-login"
         src={
@@ -33,7 +58,12 @@ function Login() {
         />
         <br />
         <br />
-        <Button variant="contained" color="info" type="submit">
+        <Button
+          onClick={onSubmitHandler}
+          variant="contained"
+          color="info"
+          type="submit"
+        >
           SUBMIT
         </Button>
       </div>

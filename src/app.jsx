@@ -6,13 +6,16 @@ import Timer from "./components/Timer";
 import Turns from "./components/Turns";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { Button } from "@mui/material";
 import Toast from "./components/Toast";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [firstClick, setFirstClick] = React.useState(false);
   const [turnCount, setTurnCount] = React.useState(-1);
+  const navigate = useNavigate();
   React.useEffect(() => {
     let allHeld = dice.every((die) => die.isHeld === true);
     if (allHeld) {
@@ -79,6 +82,14 @@ export default function App() {
 
   return (
     <div>
+      <Button
+        style={{ position: "absolute", right: "3%", background: "white" }}
+        onClick={() => {
+          navigate("/dashboard");
+        }}
+      >
+        Leaderboard
+      </Button>
       {tenzies && <Confetti />}
       <main style={{ position: "relative" }}>
         <Timer firstClick={firstClick} turn={turnCount} />

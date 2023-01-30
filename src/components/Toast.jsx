@@ -51,12 +51,44 @@ export default function Toast(props) {
       theme: "dark",
     });
 
+  const userPass = () => {
+    toast.success("user created successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
+  const userFail = () => {
+    toast.warn("user name should be unique", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   React.useEffect(() => {
     if (props.show) {
       notify();
       info();
     }
-  }, [props.show]);
+
+    if (props.userCheck === 0) {
+      userFail();
+    } else if (props.userCheck === 1) {
+      userPass();
+    }
+  }, [props.show, props.userCheck]);
 
   return (
     <div>
