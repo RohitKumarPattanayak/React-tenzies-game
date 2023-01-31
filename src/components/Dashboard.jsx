@@ -55,7 +55,7 @@ export default function Dashboard() {
           <TableHead>
             <TableRow>
               <TableCell align="left">
-                <h2>Id</h2>
+                <h2>Rank</h2>
               </TableCell>
               <TableCell align="center">
                 <h2>Name</h2>
@@ -69,13 +69,13 @@ export default function Dashboard() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {userDetails.map((row) => (
+            {userDetails.map((row, index) => (
               <TableRow
-                key={row.id}
+                key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {row.id}
+                <TableCell align="left" component="th" scope="row">
+                  {index + 1}
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
                   {row.name}

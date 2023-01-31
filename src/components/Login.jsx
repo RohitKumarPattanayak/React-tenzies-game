@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Toast from "./Toast";
 import axios from "axios";
 function Login() {
+  localStorage.setItem("current_user", "");
   const navigate = useNavigate();
   const defaultValues = {
     name: "",
@@ -19,6 +20,7 @@ function Login() {
   }
   async function onSubmitHandler() {
     let user = { data: formValues };
+    localStorage.setItem("current_user", formValues.name);
     let result = await axios({
       method: "post",
       url: "http://localhost:5000/createUser",

@@ -22,10 +22,10 @@ export default function App() {
     let score =
       (300 - (Number(turnCount) + Number(localStorage.getItem("total_time")))) *
       10;
-    let id = 1;
+    let name = localStorage.getItem("current_user");
     let result = await axios({
       method: "put",
-      url: `http://localhost:5000/putUserDetails/${id}/${score}`,
+      url: `http://localhost:5000/putUserDetails/${name}/${score}`,
     });
     console.log("result :: ", result);
   }
