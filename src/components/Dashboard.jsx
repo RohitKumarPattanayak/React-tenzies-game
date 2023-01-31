@@ -6,6 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import axios from "axios";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 
 function createData(id, name, score, date) {
@@ -13,27 +15,9 @@ function createData(id, name, score, date) {
 }
 
 let currentdate = new Date();
-let datetime =
-  currentdate.getDay() +
-  "/" +
-  currentdate.getMonth() +
-  "/" +
-  currentdate.getFullYear() +
-  " " +
-  currentdate.getHours() +
-  ":" +
-  currentdate.getMinutes() +
-  ":" +
-  currentdate.getSeconds();
-const rows = [
-  createData(1, "Frozen yoghurt", 159, 10.0),
-  createData(2, "Ice cream sandwich", 237, 9.0),
-  createData(3, "Eclair", 262, 16.0),
-  createData(4, "Cupcake", 305, 3.7),
-  createData(5, "Gingerbread", 356, 16.0),
-];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = React.useState([]);
 
   async function apiCall() {
@@ -49,6 +33,14 @@ export default function Dashboard() {
 
   return (
     <div>
+      <Button
+        style={{ position: "absolute", left: "3%", background: "white" }}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        HOME
+      </Button>
       <h1 style={{ color: "white" }}>LEADERBOARD</h1>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

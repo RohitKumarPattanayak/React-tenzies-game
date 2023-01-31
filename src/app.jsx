@@ -105,6 +105,14 @@ export default function App() {
       >
         Leaderboard
       </Button>
+      <Button
+        style={{ position: "absolute", left: "3%", background: "white" }}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        HOME
+      </Button>
       {tenzies && <Confetti />}
       <main style={{ position: "relative" }}>
         <Timer firstClick={firstClick} turn={turnCount} />
