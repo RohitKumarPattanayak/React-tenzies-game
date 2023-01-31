@@ -27,6 +27,7 @@ export default function Dashboard() {
     setUserDetails(userdetailsData.data.data);
   }
   console.log("user details", userDetails);
+
   React.useEffect(() => {
     apiCall();
   }, []);
@@ -74,7 +75,7 @@ export default function Dashboard() {
                 </TableCell>
                 <TableCell align="center">{row.total_score}</TableCell>
                 <TableCell align="center">
-                  {Date(row.updatedAt).toString().slice(0, 25)}
+                  {row.updatedAt.toString().slice(0, 25)}
                 </TableCell>
               </TableRow>
             ))}
