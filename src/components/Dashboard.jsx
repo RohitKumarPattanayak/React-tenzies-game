@@ -22,7 +22,7 @@ export default function Dashboard() {
 
   async function apiCall() {
     let userdetailsData = await axios.get(
-      "http://localhost:5000/getUserDetails"
+      `${import.meta.env.VITE_HOST}/getUserDetails`
     );
     setUserDetails(userdetailsData.data.data);
   }

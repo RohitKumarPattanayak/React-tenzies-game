@@ -25,7 +25,7 @@ export default function App() {
     let name = localStorage.getItem("current_user");
     let result = await axios({
       method: "put",
-      url: `http://localhost:5000/putUserDetails/${name}/${score}`,
+      url: `${import.meta.env.VITE_HOST}/putUserDetails/${name}/${score}`,
     });
     console.log("result :: ", result);
   }

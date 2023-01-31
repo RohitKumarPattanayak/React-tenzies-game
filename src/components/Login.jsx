@@ -23,7 +23,7 @@ function Login() {
     localStorage.setItem("current_user", formValues.name);
     let result = await axios({
       method: "post",
-      url: "http://localhost:5000/createUser",
+      url: `${import.meta.env.VITE_HOST}/createUser`,
       data: user,
     });
     if (result.status === 201) {
