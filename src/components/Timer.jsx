@@ -16,7 +16,7 @@ function MyStopwatch(props) {
       );
       localStorage.setItem(
         "total_score",
-        localStorage.getItem("total_time") + props.turns
+        Number(localStorage.getItem("total_time")) + Number(props.turns)
       );
     }
   }, [props.firstClick]);
