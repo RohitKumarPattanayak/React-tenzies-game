@@ -27,6 +27,14 @@ export default function Dashboard() {
   return (
     <div>
       <Button
+        style={{ position: "absolute", right: "3%", background: "white" }}
+        onClick={() => {
+          navigate("/game");
+        }}
+      >
+        back to game
+      </Button>
+      <Button
         style={{ position: "absolute", left: "3%", background: "white" }}
         onClick={() => {
           navigate("/");
