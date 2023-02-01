@@ -18,18 +18,6 @@ export default function App() {
   const [turnCount, setTurnCount] = React.useState(-1);
   const navigate = useNavigate();
 
-  async function scoreUpdate() {
-    let score =
-      (300 - (Number(turnCount) + Number(localStorage.getItem("total_time")))) *
-      10;
-    let name = localStorage.getItem("current_user");
-    let result = await axios({
-      method: "put",
-      url: `${import.meta.env.VITE_HOST}/putUserDetails/${name}/${score}`,
-    });
-    console.log("result :: ", result);
-  }
-
   React.useEffect(() => {
     let allHeld = dice.every((die) => die.isHeld === true);
     if (allHeld) {
@@ -38,7 +26,6 @@ export default function App() {
       setTenzies(allSame);
       if (allSame) {
         setFirstClick(false);
-        scoreUpdate();
       }
     }
   }, [dice, firstClick]);

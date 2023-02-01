@@ -10,12 +10,6 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 
-function createData(id, name, score, date) {
-  return { id, name, score, date };
-}
-
-let currentdate = new Date();
-
 export default function Dashboard() {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = React.useState([]);
@@ -26,8 +20,6 @@ export default function Dashboard() {
     );
     setUserDetails(userdetailsData.data.data);
   }
-  console.log("user details", userDetails);
-
   React.useEffect(() => {
     apiCall();
   }, []);

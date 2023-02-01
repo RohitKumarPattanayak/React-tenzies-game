@@ -1,5 +1,6 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,8 +16,23 @@ export default function Toast(props) {
       progress: undefined,
       theme: "light",
     });
-
+  async function scoreUpdate() {
+    let score =
+      (300 -
+        (Number(props.turn) + Number(localStorage.getItem("total_time")))) *
+      10;
+    console.log("score : ", score);
+    let name = localStorage.getItem("current_user");
+    let result = await axios({
+      method: "put",
+      url: `${import.meta.env.VITE_HOST}/putUserDetails/${name}/${score}`,
+    });
+  }
   const Msg = () => {
+    let score =
+      (300 -
+        (Number(props.turn) + Number(localStorage.getItem("total_time")))) *
+      10;
     return (
       <center>
         <h2>YOUR SCORE : </h2>
@@ -25,15 +41,7 @@ export default function Toast(props) {
         <h4>Time : {localStorage.getItem("total_time")}</h4>
         <hr />
         <h3>
-          TOTAL SCORE :
-          <span style={{ color: "yellow" }}>
-            {" "}
-            {" " +
-              (300 -
-                (Number(props.turn) +
-                  Number(localStorage.getItem("total_time")))) *
-                10}
-          </span>
+          TOTAL SCORE :<span style={{ color: "yellow" }}> {" " + score}</span>
         </h3>
       </center>
     );
@@ -81,6 +89,7 @@ export default function Toast(props) {
     if (props.show) {
       notify();
       info();
+      scoreUpdate();
     }
 
     if (props.userCheck === 0) {
